@@ -1,0 +1,51 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                
+            </div>
+            <div class="col-md-4">
+                <h3><%= @user.username %></h3>
+                <h4>Age: <%= @user.age %> </h4>
+                <h4>Gender: <%= @user.gender %></h4>
+            </div>
+            <div class="col-md-4">
+                <h3>Bio: <%= @user.bio %></h3>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <!--friend zone-->
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Friends (<%= @user.active_friends.size %>)
+                </div>
+                <div class="panel-body">
+                    <% @user.active_friends.last(16).each do |user| %>
+                        <%= link_to user.username , user_path(user.username) %>
+                    <% end %>    
+                </div>
+            </div>
+        </div>
+        <!--post zone -->
+        <div class="col-md-4">
+            
+        </div>
+        <!--activity zone-->
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Recent Avtivity
+                </div>
+                <div class="panel-body">
+                    <%= render_activities(@activities) %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
